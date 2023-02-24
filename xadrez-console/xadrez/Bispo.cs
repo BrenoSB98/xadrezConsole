@@ -1,6 +1,6 @@
 ﻿using tabuleiro;
 
-namespace xadrez_console.xadrez {
+namespace xadrez {
     internal class Bispo : Peca {
         public Bispo(Cor cor, Tabuleiro tab) : base(cor, tab) {
         }

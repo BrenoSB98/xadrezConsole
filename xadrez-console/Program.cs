@@ -1,6 +1,6 @@
 ﻿using System;
 using tabuleiro;
-using xadrez_console.xadrez;
+using xadrez;
 
 namespace xadrez_console{
     
@@ -8,21 +8,22 @@ namespace xadrez_console{
         static void Main(string[] args) {
 
             try {
-                Tabuleiro Tab = new(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                Tab.ColocarPeca(new Torre(Cor.Amarela, Tab), new Posicao(0, 0));
-                Tab.ColocarPeca(new Cavaleiro(Cor.Amarela, Tab), new Posicao(0, 1));
-                Tab.ColocarPeca(new Bispo(Cor.Amarela, Tab), new Posicao(0, 2));
-                Tab.ColocarPeca(new Rainha(Cor.Amarela, Tab), new Posicao(0, 3));
-                Tab.ColocarPeca(new Rei(Cor.Amarela, Tab), new Posicao(0, 4));
-                Tab.ColocarPeca(new Bispo(Cor.Amarela, Tab), new Posicao(0, 5));
-                Tab.ColocarPeca(new Cavaleiro(Cor.Amarela, Tab), new Posicao(0, 6));
-                Tab.ColocarPeca(new Torre(Cor.Amarela, Tab), new Posicao(0, 7));
+                while (!partida.Terminada) {
 
-                Tab.ColocarPeca(new Torre(Cor.Amarela, Tab), new Posicao(7, 0));
-                Tab.ColocarPeca(new Torre(Cor.Amarela, Tab), new Posicao(7, 7));
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.Tab);
 
-                Tela.ImprimirTabuleiro(Tab);
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+
+                    partida.ExecutaMovimento(origem, destino);
+                }
+                
             }
             catch (TabuleiroException e) {
                 Console.WriteLine(e.Message);

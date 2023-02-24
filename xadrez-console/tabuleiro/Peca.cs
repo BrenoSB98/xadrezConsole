@@ -14,5 +14,8 @@ namespace tabuleiro {
             QteMovientos = 0;
             Tab = tab;
         }
+        public void IncrementaQteMovimentos() { 
+            QteMovientos++;
+        }
     }
 }

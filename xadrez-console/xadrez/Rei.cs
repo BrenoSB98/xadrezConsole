@@ -1,6 +1,6 @@
 ﻿using tabuleiro;
 
-namespace xadrez_console.xadrez {
+namespace xadrez {
     internal class Rei : Peca {
         public Rei(Cor cor, Tabuleiro tab) : base(cor, tab) {
         }
