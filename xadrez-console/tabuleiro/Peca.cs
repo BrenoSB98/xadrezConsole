@@ -26,12 +26,16 @@ namespace tabuleiro {
             }
             return false;
         }
-        public bool PodeMoverParaPosicao(Posicao posicao) {
+        public bool MovimentoPossivel(Posicao posicao) {
             return MovimentosPossiveis()[posicao.Linha, posicao.Coluna];
         }
         public abstract bool[,] MovimentosPossiveis();
         public void IncrementaQteMovimentos() { 
             QteMovimentos++;
+        }
+
+        internal void DecrementarQteMovimentos() {
+            QteMovimentos--;
         }
     }
 }
