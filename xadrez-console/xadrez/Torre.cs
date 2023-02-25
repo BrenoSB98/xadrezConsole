@@ -2,7 +2,7 @@
 
 namespace xadrez {
     internal class Torre : Peca {
-        public Torre(Cor cor, Tabuleiro tab) : base(cor, tab) {
+        public Torre(Tabuleiro tab, Cor cor) : base(tab, cor) {
         }
 
         public override string ToString() {
@@ -19,14 +19,11 @@ namespace xadrez {
             Posicao posicao = new Posicao(0, 0);
 
             //Acima
-            posicao.DefinirValores(posicao.Linha - 1, posicao.Coluna);
-            var teste = Tab.PosicaoValida(posicao) && PodeMover(posicao);
-            while (teste) {
+            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
+            while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
 
-                mat[posicao.Linha, posicao.Coluna] = true;
-                var aux = Tab.Peca(posicao) != null 
-                    && Tab.Peca(posicao).Cor != Cor;
-                if (aux) {
+                mat[posicao.Linha, posicao.Coluna] = true;                
+                if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
                 posicao.Linha = posicao.Linha - 1;
@@ -34,14 +31,11 @@ namespace xadrez {
             }
 
             //Direita
-            posicao.DefinirValores(posicao.Linha, posicao.Coluna + 1);
-            teste = Tab.PosicaoValida(posicao) && PodeMover(posicao);
-            while (teste) {
+            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);          
+            while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
 
                 mat[posicao.Linha, posicao.Coluna] = true;
-                var aux = Tab.Peca(posicao) != null
-                    && Tab.Peca(posicao).Cor != Cor;
-                if (aux) {
+                if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
                 posicao.Coluna = posicao.Coluna + 1;
@@ -49,14 +43,11 @@ namespace xadrez {
             }       
 
             //Baixo
-            posicao.DefinirValores(posicao.Linha + 1, posicao.Coluna);
-            teste = Tab.PosicaoValida(posicao) && PodeMover(posicao);
-            while (teste) {
+            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
+            while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
 
                 mat[posicao.Linha, posicao.Coluna] = true;
-                var aux = Tab.Peca(posicao) != null
-                    && Tab.Peca(posicao).Cor != Cor;
-                if (aux) {
+                if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
                 posicao.Linha = posicao.Linha + 1;
@@ -64,14 +55,11 @@ namespace xadrez {
             }
 
             //Esquerda         
-            posicao.DefinirValores(posicao.Linha, posicao.Coluna - 1);
-            teste = Tab.PosicaoValida(posicao) && PodeMover(posicao);
-            while (teste) {
+            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
+            while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
 
                 mat[posicao.Linha, posicao.Coluna] = true;
-                var aux = Tab.Peca(posicao) != null
-                    && Tab.Peca(posicao).Cor != Cor;
-                if (aux) {
+                if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
                 posicao.Coluna = posicao.Coluna - 1;

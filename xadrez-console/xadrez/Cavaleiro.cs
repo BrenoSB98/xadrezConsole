@@ -2,7 +2,7 @@
 
 namespace xadrez {
     internal class Cavaleiro : Peca {
-        public Cavaleiro(Cor cor, Tabuleiro tab) : base(cor, tab) {
+        public Cavaleiro(Tabuleiro tab, Cor cor) : base(tab, cor) {
         }
 
         public override bool[,] MovimentosPossiveis() {

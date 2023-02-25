@@ -2,7 +2,7 @@
 
 namespace xadrez {
     internal class Peao : Peca {
-        public Peao(Cor cor, Tabuleiro tab) : base(cor, tab) {
+        public Peao(Tabuleiro tab, Cor cor) : base(tab, cor) {
         }
 
         public override bool[,] MovimentosPossiveis() {
