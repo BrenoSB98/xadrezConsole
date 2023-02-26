@@ -14,6 +14,7 @@ namespace tabuleiro {
             QteMovimentos = 0;
             Tab = tab;
         }
+
         public bool ExisteMovimentosPossiveis() {
             bool[,] mat = MovimentosPossiveis();
 
@@ -29,12 +30,14 @@ namespace tabuleiro {
         public bool MovimentoPossivel(Posicao posicao) {
             return MovimentosPossiveis()[posicao.Linha, posicao.Coluna];
         }
+
         public abstract bool[,] MovimentosPossiveis();
+
         public void IncrementaQteMovimentos() { 
             QteMovimentos++;
         }
 
-        internal void DecrementarQteMovimentos() {
+        public void DecrementarQteMovimentos() {
             QteMovimentos--;
         }
     }

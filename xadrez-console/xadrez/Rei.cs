@@ -4,8 +4,13 @@ using tabuleiro;
 namespace xadrez {
     internal class Rei : Peca {
 
-        //private PartidaDeXadrez _partida;
-        public Rei(Tabuleiro tab, Cor cor) : base(tab, cor) {
+        private PartidaDeXadrez _partida;
+        public Rei(Tabuleiro tab, Cor cor, PartidaDeXadrez partida) : base(tab, cor) {
+            _partida = partida;
+        }
+        
+        public override string ToString() {
+            return "R";
         }
 
         private bool PodeMover(Posicao posicao) {
@@ -78,11 +83,34 @@ namespace xadrez {
             if (aux) {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            return mat;
-        }
 
-        public override string ToString() {
-            return "R";
-        }
+            // #jogadaespecial roque
+            if (QteMovimentos == 0 && !_partida.Xeque) {
+                // #jogadaespecial roque pequeno
+                Posicao posT1 = new Posicao(posicao.Linha, posicao.Coluna + 3);
+                
+                if (TesteTorreParaRoque(posT1)) {
+                    Posicao p1 = new Posicao(posicao.Linha, posicao.Coluna + 1);
+                    Posicao p2 = new Posicao(posicao.Linha, posicao.Coluna + 2);
+                    
+                    if (Tab.Peca(p1) == null && Tab.Peca(p2) == null) {
+                        mat[posicao.Linha, posicao.Coluna + 2] = true;
+                    }
+                }
+                // #jogadaespecial roque grande
+                Posicao posT2 = new Posicao(posicao.Linha, posicao.Coluna - 4);
+                
+                if (TesteTorreParaRoque(posT2)) {
+                    Posicao p1 = new Posicao(posicao.Linha, posicao.Coluna - 1);
+                    Posicao p2 = new Posicao(posicao.Linha, posicao.Coluna - 2);
+                    Posicao p3 = new Posicao(posicao.Linha, posicao.Coluna - 3);
+                    
+                    if (Tab.Peca(p1) == null && Tab.Peca(p2) == null && Tab.Peca(p3) == null) {
+                        mat[posicao.Linha, posicao.Coluna - 2] = true;
+                    }
+                }
+            }
+            return mat;
+        }        
     }
 }
