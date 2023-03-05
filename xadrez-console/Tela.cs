@@ -14,6 +14,7 @@ namespace xadrez_console {
 
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.Turno);
+
             if (!partida.Terminada) {
                 Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
                 if (partida.Xeque) {
@@ -29,7 +30,8 @@ namespace xadrez_console {
         private static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
             Console.WriteLine("Peças Capturadas: ");
             Console.Write("Brancas: ");
-            ImprimirConjunto(partida.PecasCapturadas(Cor.Branco));
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));
+
             Console.WriteLine();
             Console.Write("Pretas: ");
             ConsoleColor color= Console.ForegroundColor;
@@ -97,7 +99,7 @@ namespace xadrez_console {
                 Console.Write("- ");
             }
             else {
-                if (peca.Cor == Cor.Branco) {
+                if (peca.Cor == Cor.Branca) {
                     Console.Write(peca);
                 }
                 else {

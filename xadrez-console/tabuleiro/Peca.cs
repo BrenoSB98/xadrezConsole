@@ -10,9 +10,17 @@ namespace tabuleiro {
 
         public Peca(Tabuleiro tab, Cor cor) {
             Posicao = null;
-            Cor = cor;
-            QteMovimentos = 0;
             Tab = tab;
+            Cor = cor;
+            QteMovimentos = 0;            
+        }
+
+        public void IncrementaQteMovimentos() {
+            QteMovimentos++;
+        }
+
+        public void DecrementaQteMovimentos() {
+            QteMovimentos--;
         }
 
         public bool ExisteMovimentosPossiveis() {
@@ -31,14 +39,6 @@ namespace tabuleiro {
             return MovimentosPossiveis()[posicao.Linha, posicao.Coluna];
         }
 
-        public abstract bool[,] MovimentosPossiveis();
-
-        public void IncrementaQteMovimentos() { 
-            QteMovimentos++;
-        }
-
-        public void DecrementarQteMovimentos() {
-            QteMovimentos--;
-        }
+        public abstract bool[,] MovimentosPossiveis();        
     }
 }

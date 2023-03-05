@@ -20,44 +20,44 @@ namespace xadrez {
 
             Posicao posicao = new Posicao(0, 0);
 
-            // esquerda
+            // Esquerda
             posicao.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
             while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
                 mat[posicao.Linha, posicao.Coluna] = true;
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha, posicao.Coluna - 1);
+                posicao.Coluna = posicao.Coluna - 1;
             }
 
-            // direita
+            // Direita
             posicao.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
             while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
                 mat[posicao.Linha, posicao.Coluna] = true;
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha, posicao.Coluna + 1);
+                posicao.Coluna = posicao.Coluna + 1;
             }
 
-            // acima
+            // Acima
             posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
             while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
                 mat[posicao.Linha, posicao.Coluna] = true;
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha - 1, posicao.Coluna);
+                posicao.Linha = posicao.Linha - 1;
             }
 
-            // abaixo
+            // Abaixo
             posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
             while (Tab.PosicaoValida(posicao) && PodeMover(posicao)) {
                 mat[posicao.Linha, posicao.Coluna] = true;
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha + 1, posicao.Coluna);
+                posicao.Linha = posicao.Linha + 1;
             }
 
             // Noroeste
@@ -67,7 +67,8 @@ namespace xadrez {
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha - 1, posicao.Coluna - 1);
+                posicao.Linha = posicao.Linha - 1;
+                posicao.Coluna = posicao.Coluna - 1;
             }
 
             // Nordeste
@@ -77,7 +78,8 @@ namespace xadrez {
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha - 1, posicao.Coluna + 1);
+                posicao.Linha = posicao.Linha - 1;
+                posicao.Coluna = posicao.Coluna + 1;
             }
 
             // Sudeste
@@ -87,7 +89,8 @@ namespace xadrez {
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha + 1, posicao.Coluna + 1);
+                posicao.Linha = posicao.Linha + 1;
+                posicao.Coluna = posicao.Coluna + 1;
             }
 
             // Sudoeste
@@ -97,7 +100,8 @@ namespace xadrez {
                 if (Tab.Peca(posicao) != null && Tab.Peca(posicao).Cor != Cor) {
                     break;
                 }
-                posicao.DefinirValores(posicao.Linha + 1, posicao.Coluna - 1);
+                posicao.Linha = posicao.Linha + 1;
+                posicao.Coluna = posicao.Coluna - 1;
             }
             return mat;
         }        

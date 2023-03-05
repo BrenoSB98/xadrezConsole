@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace tabuleiro {
-    internal class TabuleiroException : Exception {
+    class TabuleiroException : Exception {
         public TabuleiroException(string message) : base(message) {
         }
     }

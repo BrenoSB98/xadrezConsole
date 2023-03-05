@@ -1,5 +1,5 @@
 ﻿namespace tabuleiro {
-    internal class Tabuleiro {
+    class Tabuleiro {
 
         public int Linhas { get; set; }
         public int Colunas { get; set; }
@@ -42,10 +42,7 @@
         }
 
         public bool PosicaoValida(Posicao posicao) {
-            var PosLinha = posicao.Linha < 0 || posicao.Linha >= Linhas;
-            var PosColuna = posicao.Coluna < 0 || posicao.Coluna >= Colunas;
-            var PosFinal = PosLinha || PosColuna;
-            if (PosFinal) {
+            if (posicao.Linha < 0 || posicao.Linha >= Linhas || posicao.Coluna < 0 || posicao.Coluna >= Colunas) {
                 return false;
             }
             return true;
